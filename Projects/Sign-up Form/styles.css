@@ -1,0 +1,241 @@
+:root {
+    /* Neo-Grotesque Font Stack */
+    --global-font: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    /* Odin logo and container */
+    --logo-height: 120px;
+    /* Top margin of several elements in the form */
+    --top-margen: 2rem;
+    /* Left margin at the right column */
+    --left-margin: 4rem;
+    /* Width of form fields and feedback paragraphs */
+    --field-flex: 0.33;
+    /* Color of the form button and the log-in link */
+    --submit-color: #596D48;
+
+    /* Change the base font size to 10px */
+    font-size: 62.5%;
+}
+
+@font-face {
+    font-family: norsebold;
+    src: url("./resources/Norsebold.otf");
+}
+
+body {
+    background-color: #f8f8f8;
+    /* Remove the default body styles to make the content fill the whole page */
+    margin: 0;
+    padding: 0;
+    /* Default font family */
+    font-family: var(--global-font);
+    /* Default font size */
+    font-size: 1.6rem;
+}
+
+p {
+    /* Max paragraph width for better readability */
+    max-width: 50ch;
+}
+
+.container {
+    /* Divide the page in two halves or columns */
+    display: flex;
+    height: 100vh;
+}
+
+/* The two columns which the page is divided into */
+.container_column {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+
+/* Left column styles */
+
+
+.container_column:first-of-type {
+    background-image: url("./resources/halie-west.jpg");
+    /* The size of the background image matches the height of the viewport unless it's too small or too big */
+    background-size: auto clamp(960px, 100vh, 2792px);
+    flex: 0.5;
+    text-align: center;
+}
+
+.container_column:first-of-type p {
+    /* Align the paragraphs in the first column to the bottom of their containers, with a slight margin */
+    margin: auto auto 10px auto;
+    color: white;
+}
+
+.container_column:first-of-type a {
+    /* Default link color */
+    color: rgb(0, 255, 0);
+}
+
+.container_column:first-of-type a:hover {
+    color: rgb(255, 255, 128);
+}
+
+.container_column:first-of-type a:visited {
+    color: rgb(0, 255, 255);
+}
+
+/* Container for the Odin logo */
+.container_column:first-of-type > div:first-of-type {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Same height than the logo */
+    height: var(--logo-height);
+    margin-top: 210px;
+    padding: 2rem 0 0 0;
+    /* Display the Odin logo and name inlined and centered */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: norsebold;
+    font-size: 10rem;
+}
+
+.container_column:first-of-type > div:first-of-type img {
+    height: var(--logo-height);
+}
+
+
+/* Right column styles */
+
+
+/* Right column */
+.container_column:nth-of-type(2) {
+    /* Remove the pixel between the left and right columns */
+    margin-left: -1px;
+    flex: 1;
+}
+
+/* Element at the top of the right column */
+.container_column:nth-of-type(2) > div:first-of-type {
+    margin-top: 140px;
+}
+
+/* All non-form children */
+.container_column:nth-of-type(2) > div {
+    margin-left: var(--left-margin);
+}
+
+/* Paragraphs in the top section of the right column */
+.container_column:nth-of-type(2) > div:first-child > p {
+    font-size: 2.4rem;
+    font-weight: bold;
+}
+
+/* Paragraph in the bottom section of the right column */
+.container_column:nth-of-type(2) > div:last-child > p {
+    font-size: 1.8rem;
+}
+
+/* Link in the bottom section of the right column */
+.container_column:nth-of-type(2) > div:last-child > a {
+    color: var(--submit-color);
+    font-weight: bold;
+}
+
+
+/* Form styles */
+
+
+form {
+    margin-top: var(--top-margen);
+}
+
+form h1 {
+    /* Remove the default margin of the header */
+    margin-top: 0;
+}
+
+/* Container for all the fields of the form */
+fieldset {
+    background-color: white;
+    /* Remove the default border */
+    border: none;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+    padding: var(--top-margen) 0 4rem var(--left-margin);
+}
+
+/* Fieldset rows */
+fieldset > div {
+    /* Display the fields as rows (two fields in each) */
+    display: flex;
+    margin-top: var(--top-margen);
+}
+
+.field {
+    /* Display the labels above the inputs, instead of next to each other */
+    display: flex;
+    flex-direction: column;
+    /* Same width for all the fields */
+    flex: var(--field-flex);
+}
+
+.field + .field {
+    /* Space between a field and the one before it */
+    margin-left: 5rem;
+}
+
+/* Paragraphs containing feedback for the user */
+.field + p {
+    margin: 2.5rem 0 0 1rem;
+    /* Same width than the fields */
+    flex: var(--field-flex);
+    font-size: 1.4rem;
+    font-style: italic;
+}
+
+/* Asterisk = (*) */
+.required {
+    font-weight: bold;
+    /* Remove the italics from the asterisk in the feedback paragraph */
+    font-style: normal;
+}
+
+label {
+    /* Display the labels in bold uppercase with the letters slightly spaced-out */
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+input {
+    height: 2.8rem;
+    /* Default border */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.4rem;
+    margin-top: 0.5rem;
+    /* Same text size than the rest of the page */
+    font-size: 1.6rem;
+}
+
+input:invalid {
+    border-color: red;
+}
+
+input:focus {
+    border-color: blue;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    /* Remove the default outline when the input is selected */
+    outline: none;
+}
+
+form button {
+    background-color: var(--submit-color);
+    width: 22rem;
+    height: 5rem;
+    /* Remove the default border of the button */
+    border: none;
+    border-radius: 0.8rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin: 3.2rem 0 2rem var(--left-margin);
+    /* Same text size than the rest of the page */
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: white;
+}
