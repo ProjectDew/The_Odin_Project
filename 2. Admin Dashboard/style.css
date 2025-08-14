@@ -1,0 +1,132 @@
+:root {
+    --min-project-height: 150px;
+    --icon-size: 24px;
+
+    font-size: 62.5%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    background-color: #e2e8f0;
+    font-size: 1.6rem;
+}
+
+h2 {
+    padding-bottom: 2rem;
+}
+
+h3 {
+    padding-bottom: 0.3rem;
+}
+
+button {
+    border: none;
+}
+
+.section-container {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template: 150px 1fr 1fr / 300px 1fr 300px;
+    box-sizing: border-box;
+}
+
+.item {
+    padding: 2rem;
+}
+
+.item p {
+    color: rgb(96, 96, 96);
+}
+
+.menu {
+    grid-row: 1 / -1;
+}
+
+.menu > div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 2.4rem;
+}
+
+.menu ul {
+    margin-top: 70px;
+}
+
+.menu li {
+    background: url("./resources/alert-circle.svg") no-repeat;
+    height: var(--icon-size);
+    margin-top: 2.4rem;
+    padding-left: 4.8rem;
+    align-content: center;
+    font-size: 2.4rem;
+    list-style: none;
+}
+
+.profile {
+    background-color: white;
+    grid-column: 2 / -1;
+}
+
+.projects {
+    grid-area: 2 / 2 / -1 / -2;
+}
+
+.announcements {
+    outline: 1px solid black;
+    grid-area: 2 / -2 / span 1 / -1;
+}
+
+.trending {
+    outline: 1px solid black;
+    grid-area: 3 / -2 / span 1 / -1;
+}
+
+.highlight {
+    background-color: #1992d4;
+    color: white;
+}
+
+.project-container {
+    display: grid;
+    grid-template: repeat(auto-fill, minmax(var(--min-project-height), 1fr)) / repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px 25px;
+    box-sizing: border-box;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: linear-gradient(to right, #facc15, #facc15 8px, white 8px);
+    min-height: var(--min-project-height);
+    padding: 3rem;
+    border-radius: 0.8rem;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+.project > .button-container {
+    display: flex;
+    justify-content: end;
+}
+
+button.project-button {
+    background: url("./resources/alert-circle.svg") no-repeat;
+    background-color: #facc15;
+    width: var(--icon-size);
+    height: var(--icon-size);
+    margin-left: var(--icon-size);
+}
+
+button.project-button:hover {
+    background-color: red;
+}
+
+button.project-button:active {
+    background-color: green;
+}
