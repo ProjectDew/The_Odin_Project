@@ -1,6 +1,11 @@
 :root {
+    --section-padding: 2rem;
     --min-project-height: 150px;
     --icon-size: 24px;
+    --profile-icon-size: 48px;
+    --profile-icon-size-big: 72px;
+    --highlight-background-color: #1992d4;
+    --highlight-text-color: white;
 
     font-size: 62.5%;
 }
@@ -16,49 +21,64 @@ body {
     font-size: 1.6rem;
 }
 
-h2 {
-    padding-bottom: 2rem;
+h2 + * {
+    margin-top: 1rem;
 }
 
-h3 {
-    padding-bottom: 0.3rem;
+h3 + * {
+    margin-top: 0.3rem;
 }
 
 button {
     border: none;
 }
 
-.section-container {
+button > div {
+    display: flex;
+}
+
+button div {
+    height: 100%;
+    margin: auto;
+    align-content: center;
+    text-align: left;
+}
+
+.sections.container {
     width: 100%;
     min-height: 100vh;
     display: grid;
-    grid-template: 150px 1fr 1fr / 300px 1fr 300px;
+    grid-template: 150px 390px 390px 1fr / 300px 1fr 300px;
     box-sizing: border-box;
 }
 
-.item {
-    padding: 2rem;
+.sections > .section {
+    padding: var(--section-padding) 0 var(--section-padding) var(--section-padding);
+    box-sizing: border-box;
 }
 
-.item p {
-    color: rgb(96, 96, 96);
+.sections > .section p {
+    color: rgb(128, 128, 128);
 }
 
-.menu {
+.section.menu {
+    background-color: #1992d4;
+    padding-top: 2rem;
     grid-row: 1 / -1;
+    color: white;
 }
 
-.menu > div:first-child {
+.section.menu > div:first-child {
     display: flex;
     align-items: center;
     gap: 2.4rem;
 }
 
-.menu ul {
+.section.menu ul {
     margin-top: 70px;
 }
 
-.menu li {
+.section.menu li {
     background: url("./resources/alert-circle.svg") no-repeat;
     height: var(--icon-size);
     margin-top: 2.4rem;
@@ -68,65 +88,206 @@ button {
     list-style: none;
 }
 
-.profile {
+.section.profile {
     background-color: white;
     grid-column: 2 / -1;
 }
 
-.projects {
+.section.projects {
+    max-height: calc(100vh);
     grid-area: 2 / 2 / -1 / -2;
 }
 
-.announcements {
-    outline: 1px solid black;
+.section.announcements {
+    padding-right: var(--section-padding);
     grid-area: 2 / -2 / span 1 / -1;
 }
 
-.trending {
-    outline: 1px solid black;
+.section.trendings {
+    padding-right: var(--section-padding);
     grid-area: 3 / -2 / span 1 / -1;
 }
 
-.highlight {
+.projects > .project,
+.announcements.container,
+.trendings.container {
+    border-radius: 0.8rem;
+    box-shadow: 2.5px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+.profile {
+    display: grid;
+    grid-template: 1fr 1fr / 3fr 1fr;
+    align-content: center;
+}
+
+.profile-item-1 form,
+.profile-item-2,
+.profile-item-4 {
+    display: flex;
+    align-items: center;
+}
+
+.profile-item-2 > *,
+.profile-item-4 > * {
+    margin-right: 3rem;
+}
+
+.profile-item {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+    align-content: center;
+}
+
+
+.profile-item button {
+    background-color: inherit;
+    background-color: #facc15;  /* this line should be removed in the final design */
+    font-weight: bold;
+    color: black;
+}
+
+.profile-item-1 input {
+    background-color: rgb(230, 230, 230);
+    width: clamp(300px, 100%, 800px);
+    height: 30px;
+    border: none;
+    border-radius: 32px;
+    margin-left: 2rem;
+}
+
+.profile-item-2 .button.notifications {
+    height: var(--icon-size);
+}
+
+.profile-item-2 {
+    padding-right: 2.5rem;
+    justify-content: end;
+}
+
+.profile-item-2 .button {
+    height: var(--profile-icon-size);
+    font-size: 1.8rem;
+}
+
+.profile-item-2 .button > div > div {
+    padding-left: 2.5rem;
+}
+
+.profile-item-3 .button {
+    height: var(--profile-icon-size-big);
+}
+
+.profile-item-3 p:last-of-type {
+    font-size: 2.2rem;
+}
+
+.profile-item-3 .button > div > div {
+    padding-left: 1.6rem;
+}
+
+.profile-item-4 .button {
     background-color: #1992d4;
+    width: 100px;
+    height: 40px;
+    border-radius: 32px;
+    font-size: 1.6rem;
     color: white;
 }
 
-.project-container {
+.projects.container {
+    padding-bottom: var(--section-padding);
     display: grid;
     grid-template: repeat(auto-fill, minmax(var(--min-project-height), 1fr)) / repeat(auto-fill, minmax(350px, 1fr));
     gap: 30px 25px;
     box-sizing: border-box;
 }
 
-.project {
+.projects > .project {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-image: linear-gradient(to right, #facc15, #facc15 8px, white 8px);
     min-height: var(--min-project-height);
     padding: 3rem;
-    border-radius: 0.8rem;
-    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
-.project > .button-container {
+.project .container.buttons {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
-button.project-button {
+.project .button {
     background: url("./resources/alert-circle.svg") no-repeat;
-    background-color: #facc15;
+    background-color: #facc15;  /* this line should be removed in the final design */
     width: var(--icon-size);
     height: var(--icon-size);
     margin-left: var(--icon-size);
 }
 
-button.project-button:hover {
+.project .button:hover {
     background-color: red;
 }
 
-button.project-button:active {
+.project .button:active {
     background-color: green;
+}
+
+.announcements.container {
+    background-color: white;
+    padding: 2.5rem;
+}
+
+.announcement {
+    padding: 0.5rem;
+}
+
+.announcement h3 {
+    font-size: 1.4rem;
+}
+
+.announcement p {
+    height: 3lh;
+    font-size: 1.3rem;
+    overflow: hidden;
+    /* white-space: nowrap;
+    text-overflow: ellipsis; */
+}
+
+.announcement + .announcement {
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.section.trendings {
+    margin-top: 0.8rem;
+}
+
+.trendings.container {
+    background-color: white;
+    padding: 2rem;
+}
+
+.trending + .trending {
+    margin-top: 2rem;
+}
+
+.trending.button {
+    background-color: inherit;
+    background-color: #facc15;  /* this line should be removed in the final design */
+    width: 100%;
+    height: calc(var(--profile-icon-size));
+}
+
+.trending.button div {
+    width: 100%;
+}
+
+.trending.button > div > div {
+    padding-left: 1.4rem;
+}
+
+.trending p:first-of-type {
+    color: black;
 }
