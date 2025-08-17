@@ -21,6 +21,24 @@ body {
     font-size: 1.6rem;
 }
 
+body {
+  font-family: Roboto, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 1.9rem;
+    letter-spacing: 0.5px;
+}
+
+h3 {
+    font-size: 1.7rem;
+}
+
 h2 + * {
     margin-top: 1rem;
 }
@@ -64,31 +82,12 @@ button div {
 .section.menu {
     background-color: #1992d4;
     padding-top: 2rem;
+    padding-left: 0;
     grid-row: 1 / -1;
     color: white;
 }
 
-.section.menu > div:first-child {
-    display: flex;
-    align-items: center;
-    gap: 2.4rem;
-}
-
-.section.menu ul {
-    margin-top: 70px;
-}
-
-.section.menu li {
-    background: url("./resources/alert-circle.svg") no-repeat;
-    height: var(--icon-size);
-    margin-top: 2.4rem;
-    padding-left: 4.8rem;
-    align-content: center;
-    font-size: 2.4rem;
-    list-style: none;
-}
-
-.section.profile {
+.section.user-profile {
     background-color: white;
     grid-column: 2 / -1;
 }
@@ -115,10 +114,16 @@ button div {
     box-shadow: 2.5px 4px 4px rgba(0, 0, 0, 0.15);
 }
 
-.profile {
-    display: grid;
-    grid-template: 1fr 1fr / 3fr 1fr;
-    align-content: center;
+.project .button:hover,
+.user-profile .search:hover,
+.user-profile .notifications:hover {
+    filter: invert(50%);
+}
+
+.project .button:active,
+.user-profile .search:active,
+.user-profile .notifications:active {
+    filter: invert(80%);
 }
 
 .profile-item-1 form,
@@ -133,17 +138,97 @@ button div {
     margin-right: 3rem;
 }
 
+.profile-item-2 .show-profile:hover,
+.profile-item-3 .show-profile:hover,
+.trending .button:hover {
+    outline: 1px solid var(--highlight-background-color);
+    border-radius: 64px;
+}
+
+.profile-item-2 .show-profile:active,
+.profile-item-3 .show-profile:active,
+.trending .button:active {
+    outline: 2px solid var(--highlight-background-color);
+    border-radius: 64px;
+}
+
+.button.show-profile img,   
+.button.trending img {
+    border-radius: 50%;
+}
+
+.menu .button:hover,
+.user-profile .profile-item-4 .button:hover {
+    color: #a5e0ff;
+}
+
+.menu .button:active,
+.user-profile .profile-item-4 .button:active {
+    color: rgb(48, 48, 255);
+}
+
+.menu > div:first-child {
+    display: flex;
+    align-items: center;
+}
+
+.menu > div:first-child img {
+    width: calc(var(--icon-size) * 2);
+    height: calc(var(--icon-size) * 2);
+    filter: invert(100%);
+}
+
+.menu div:first-child > * {
+    padding-left: 1.2rem;
+}
+
+.menu .button {
+    background-color: inherit;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.menu ul {
+    margin-top: 70px;
+}
+
+.menu li {
+    height: var(--icon-size);
+    margin-top: 2.4rem;
+    align-content: center;
+    list-style: none;
+}
+
+.menu .button > div > * {
+    padding-left: 2.4rem;
+}
+
+.menu .button img {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    filter: invert(100%);
+}
+
+.user-profile {
+    display: grid;
+    grid-template: 1fr 1fr / 3fr 1fr;
+    align-content: center;
+}
+
 .profile-item {
     margin-left: 2.5rem;
     margin-right: 2.5rem;
     align-content: center;
 }
 
-
-.profile-item button {
+.profile-item .button {
     background-color: inherit;
-    background-color: #facc15;  /* this line should be removed in the final design */
     font-weight: bold;
+}
+
+.profile-item .button .profile-text {
     color: black;
 }
 
@@ -154,14 +239,21 @@ button div {
     border: none;
     border-radius: 32px;
     margin-left: 2rem;
+    padding-left: 2rem;
+    outline: none;
+}
+
+.profile-item-1 .search {
+    width: var(--icon-size);
+    height: var(--icon-size);
 }
 
 .profile-item-2 .button.notifications {
+    width: var(--icon-size);
     height: var(--icon-size);
 }
 
 .profile-item-2 {
-    padding-right: 2.5rem;
     justify-content: end;
 }
 
@@ -170,7 +262,11 @@ button div {
     font-size: 1.8rem;
 }
 
-.profile-item-2 .button > div > div {
+.profile-item-2 .show-profile {
+    padding-right: 1.5rem;
+}
+
+.profile-item-2 .text-container {
     padding-left: 2.5rem;
 }
 
@@ -178,11 +274,20 @@ button div {
     height: var(--profile-icon-size-big);
 }
 
+.profile-item-3 .show-profile {
+    padding-right: 3rem;
+}
+
 .profile-item-3 p:last-of-type {
     font-size: 2.2rem;
 }
 
-.profile-item-3 .button > div > div {
+.profile-item-3 .profile-text {
+    line-height: 25px;
+    color: black;
+}
+
+.profile-item-3 .text-container {
     padding-left: 1.6rem;
 }
 
@@ -198,7 +303,7 @@ button div {
 .projects.container {
     padding-bottom: var(--section-padding);
     display: grid;
-    grid-template: repeat(auto-fill, minmax(var(--min-project-height), 1fr)) / repeat(auto-fill, minmax(350px, 1fr));
+    grid-template: repeat(auto-fill, minmax(var(--min-project-height), 1fr)) / repeat(auto-fill, minmax(360px, 1fr));
     gap: 30px 25px;
     box-sizing: border-box;
 }
@@ -209,7 +314,7 @@ button div {
     justify-content: space-between;
     background-image: linear-gradient(to right, #facc15, #facc15 8px, white 8px);
     min-height: var(--min-project-height);
-    padding: 3rem;
+    padding: 3.5rem;
 }
 
 .project .container.buttons {
@@ -218,19 +323,22 @@ button div {
 }
 
 .project .button {
-    background: url("./resources/alert-circle.svg") no-repeat;
-    background-color: #facc15;  /* this line should be removed in the final design */
     width: var(--icon-size);
     height: var(--icon-size);
     margin-left: var(--icon-size);
+    filter: invert(20%);
 }
 
-.project .button:hover {
-    background-color: red;
+.project .favorite {
+    background: url("./resources/star-plus-outline.svg") no-repeat;
 }
 
-.project .button:active {
-    background-color: green;
+.project .follow {
+    background: url("./resources/eye-plus-outline.svg") no-repeat;
+}
+
+.project .fork {
+    background: url("./resources/source-fork.svg") no-repeat;
 }
 
 .announcements.container {
@@ -248,10 +356,8 @@ button div {
 
 .announcement p {
     height: 3lh;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     overflow: hidden;
-    /* white-space: nowrap;
-    text-overflow: ellipsis; */
 }
 
 .announcement + .announcement {
@@ -275,7 +381,6 @@ button div {
 
 .trending.button {
     background-color: inherit;
-    background-color: #facc15;  /* this line should be removed in the final design */
     width: 100%;
     height: calc(var(--profile-icon-size));
 }

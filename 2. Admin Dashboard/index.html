@@ -13,62 +13,140 @@
     <div class="container sections">
 
       <div class="section menu">
+
         <div>
-          <div>
-            <img src="./resources/alert-circle.svg" alt="Dashboard icon">
-          </div>
-          <div>
-            <h1>Dashboard</h1>
-          </div>
+          <img src="./resources/view-dashboard.svg" alt="Dashboard">
+          <h1>Dashboard</h1>
         </div>
+
         <ul>
-          <li>Home</li>
-          <li>Profile</li>
-          <li>Messages</li>
-          <li>History</li>
-          <li>Tasks</li>
-          <li>Communities</li>
+
+          <li>
+            <button type="button" class="button home">
+              <div>
+                <img src="./resources/home.svg" alt="Home">
+                <span>Home</span>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button type="button" class="button profile">
+              <div>
+                <img src="./resources/card-account-details-outline.svg" alt="Profile">
+                <span>Profile</span>
+              </div>
+            </button>
+          </li>
+          
+          <li>
+            <button type="button" class="button messages">
+              <div>
+                <img src="./resources/message-reply.svg" alt="Messages">
+                <span>Messages</span>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button type="button" class="button history">
+              <div>
+                <img src="./resources/clock-time-three.svg" alt="History">
+                <span>History</span>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button type="button" class="button tasks">
+              <div>
+                <img src="./resources/note-multiple.svg" alt="Tasks">
+                <span>Tasks</span>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button type="button" class="button communities">
+              <div>
+                <img src="./resources/account-group.svg" alt="Communities">
+                <span>Communities</span>
+              </div>
+            </button>
+          </li>
+
         </ul>
+
         <ul>
-          <li>Settings</li>
-          <li>Support</li>
-          <li>Privacy</li>
+
+          <li>
+            <button type="button" class="button settings">
+              <div>
+                <img src="./resources/cog.svg" alt="Settings">
+                <span>Settings</span>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button type="button" class="button support">
+              <div>
+                <img src="./resources/help-box.svg" alt="Support">
+                <span>Support</span>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button type="button" class="button privacy">
+              <div>
+                <img src="./resources/shield-check.svg" alt="Privacy">
+                <span>Privacy</span>
+              </div>
+            </button>
+          </li>
+
         </ul>
+
       </div>
 
-      <div class="section profile">
+      <div class="section user-profile">
+
         <div class="profile-item profile-item-1">
-          <form action="example.com" method="get">
-            <button type="submit">
-              <img src="./resources/alert-circle.svg" alt="Search icon">
+          <form action="index.html" method="get">
+            <button type="submit" class="button search">
+              <img src="./resources/magnify.svg" alt="Search">
             </button>
             <input type="text" name="search-string">
           </form>
         </div>
+
         <div class="profile-item profile-item-2">
           <button type="button" class="button notifications">
-            <img src="./resources/alert-circle.svg" alt="Notifications icon">
+            <img src="./resources/bell-ring-outline.svg" alt="Notifications">
           </button>
           <button type="button" class="button show-profile">
             <div>
-              <img src="./resources/alert-circle.svg" alt="User profile image">
-              <div>
-                <p>Morgan Oakley</p>
+              <img src="./resources/user-profile.png" alt="User profile">
+              <div class="text-container">
+                <p class="profile-text">Morgan Oakley</p>
               </div>
             </div>
           </button>
         </div>
+
         <div class="profile-item profile-item-3">
           <button type="button" class="button show-profile">
             <div>
-              <img src="./resources/alert-circle.svg" alt="User profile image">
-              <div>
-                <p>Hi there,</p>
-                <p>Morgan Oakley (@morgan)</p>
+              <img id="test" src="./resources/user-profile.png" alt="User profile">
+              <div class="text-container">
+                <p class="profile-text">Hi there,</p>
+                <p class="profile-text">Morgan Oakley (@morgan)</p>
               </div>
             </div>
           </button>
         </div>
+
         <div class="profile-item profile-item-4">
           <button class="button create-new">New</button>
           <button class="button upload">Upload</button>
@@ -77,7 +155,7 @@
       </div>
 
       <div class="section projects">
-        <h2>Your projects</h2>
+        <h2>Your Projects</h2>
 
         <div class="container projects">
 
@@ -89,7 +167,7 @@
             <div class="container buttons">
               <button type="button" class="button favorite"></button>
               <button type="button" class="button follow"></button>
-              <button type="button" class="button share"></button>
+              <button type="button" class="button fork"></button>
             </div>
           </div>
 
@@ -98,10 +176,10 @@
               <h3>Less Cool Project</h3>
               <p>Nullam condimentum ipsum ut lectus vehicula consectetur. Quisque sed dolor tincidunt, consectetur sapien et, facilisis dolor. Duis sem purus, dignissim ut sapien in, varius pellentesque lactus.</p>
             </div>
-            <div class="project container buttons">
+            <div class="container buttons">
               <button type="button" class="button favorite"></button>
               <button type="button" class="button follow"></button>
-              <button type="button" class="button share"></button>
+              <button type="button" class="button fork"></button>
             </div>
           </div>
 
@@ -110,10 +188,10 @@
               <h3>Impossible App</h3>
               <p>In hac habitasse platea dictumst. Vivamus dicturn rutrum arcu, a placerat velit sagittis id.</p>
             </div>
-            <div class="project container buttons">
+            <div class="container buttons">
               <button type="button" class="button favorite"></button>
               <button type="button" class="button follow"></button>
-              <button type="button" class="button share"></button>
+              <button type="button" class="button fork"></button>
             </div>
           </div>
 
@@ -122,10 +200,10 @@
               <h3>Easy Peasy App</h3>
               <p>Etiam cursus eros ac efficitur fringilla. Vestibulum dignissim urna eget accumsan aliquam. Curabitur dignissim nisi in tortor commodo, ac bibendum magna tincidunt.</p>
             </div>
-            <div class="project container buttons">
+            <div class="container buttons">
               <button type="button" class="button favorite"></button>
               <button type="button" class="button follow"></button>
-              <button type="button" class="button share"></button>
+              <button type="button" class="button fork"></button>
             </div>
           </div>
 
@@ -134,10 +212,10 @@
               <h3>Ad Blocker</h3>
               <p>Quisque eget rutrum nisi. Nam augue justo, cursus vitae metus vel, pharetra hendrerit felis. Aliquam sed malesuda eros.</p>
             </div>
-            <div class="project container buttons">
+            <div class="container buttons">
               <button type="button" class="button favorite"></button>
               <button type="button" class="button follow"></button>
-              <button type="button" class="button share"></button>
+              <button type="button" class="button fork"></button>
             </div>
           </div>
 
@@ -146,10 +224,10 @@
               <h3>Money Maker</h3>
               <p>Praesent convallis, libero quis congue elementum, nunc ante faucibus sapien, ac scelerisque tortor purus sit amet ex. Pellentesque mollis nec sem vel aliquam.</p>
             </div>
-            <div class="project container buttons">
+            <div class="container buttons">
               <button type="button" class="button favorite"></button>
               <button type="button" class="button follow"></button>
-              <button type="button" class="button share"></button>
+              <button type="button" class="button fork"></button>
             </div>
           </div>
           
@@ -193,9 +271,9 @@
         <div class="container trendings">
 
           <div class="trending trending-1">
-            <button type="button" class="trending button">
+            <button type="button" class="button trending">
               <div>
-                <img src="./resources/alert-circle.svg" alt="Trending profile image">
+                <img src="./resources/trending-1.png" alt="Trend 1">
                 <div>
                   <p>@tegan</p>
                   <p>World Peace Builder</p>
@@ -205,9 +283,9 @@
           </button>
 
           <div class="trending trending-2">
-            <button type="button" class="trending button">
+            <button type="button" class="button trending">
               <div>
-                <img src="./resources/alert-circle.svg" alt="Trending profile image">
+                <img src="./resources/user-profile.png" alt="Trend 2">
                 <div>
                   <p>@morgan</p>
                   <p>Super Cool Project</p>
@@ -217,9 +295,9 @@
           </button>
 
           <div class="trending trending-3">
-            <button type="button" class="trending button">
+            <button type="button" class="button trending">
               <div>
-                <img src="./resources/alert-circle.svg" alt="Trending profile image">
+                <img src="./resources/trending-3.png" alt="Trend 3">
                 <div>
                   <p>@kendall</p>
                   <p>Life Changing App</p>
@@ -229,9 +307,9 @@
           </button>
 
           <div class="trending trending-4">
-            <button type="button" class="trending button">
+            <button type="button" class="button trending">
               <div>
-                <img src="./resources/alert-circle.svg" alt="Trending profile image">
+                <img src="./resources/trending-4.png" alt="Trend 4">
                 <div>
                   <p>@alex</p>
                   <p>No Traffic Maker</p>
