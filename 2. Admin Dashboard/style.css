@@ -1,16 +1,28 @@
-:root {
-    --section-padding: 2rem;
-    --min-project-height: 150px;
-    --icon-size: 24px;
-    --profile-icon-size: 48px;
-    --profile-icon-size-big: 72px;
-    --highlight-background-color: #1992d4;
-    --highlight-text-color: white;
 
+/* GLOBAL STYLES */
+
+
+:root {
+    /* The value used as padding in the global layout elements and the project containers */
+    --section-padding: 2rem;
+    /* The minimum height of the project containers */
+    --min-project-height: 150px;
+    /* The size of all the icons that are not profile images */
+    --icon-size: 24px;
+    /* The size of the smaller profile images */
+    --profile-icon-size: 48px;
+    /* The background color of the menu and the highlighted buttons in the profile section */
+    --highlight-background-color: #1992d4;
+    /* The text color of the menu and the highlighted buttons in the profile section */
+    --highlight-text-color: white;
+  
+    font-family: Roboto, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    /* Base font size of 10px for easier maths with rem */
     font-size: 62.5%;
 }
 
 * {
+    /* Remove default margin and padding */
     margin: 0;
     padding: 0;
 }
@@ -18,12 +30,11 @@
 html,
 body {
     background-color: #e2e8f0;
+    /* Set global font size to its default value */
     font-size: 1.6rem;
 }
 
-body {
-  font-family: Roboto, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-}
+/* Make the headings a tad smaller and give them some space between letters to increase readability */
 
 h1 {
     font-size: 2.5rem;
@@ -37,7 +48,10 @@ h2 {
 
 h3 {
     font-size: 1.7rem;
+    letter-spacing: 0.3px;
 }
+
+/* Add some margin before any element that follows an h2 or h3 */
 
 h2 + * {
     margin-top: 1rem;
@@ -47,35 +61,130 @@ h3 + * {
     margin-top: 0.3rem;
 }
 
+/* Remove the default button border */
 button {
     border: none;
 }
 
+/* Display all the divs that are direct children of a button as flexible boxes */
 button > div {
     display: flex;
 }
 
 button div {
+    /* Stretch the divs inside a button to its whole height */
     height: 100%;
+    /* Center elements vertically */
     margin: auto;
     align-content: center;
     text-align: left;
 }
 
+
+/* MULTIPLE SELECTORS */
+
+
+/* INDIVIDUAL PROJECT CONTAINERS + CONTAINERS FOR THE ANNOUNCEMENTS AND TRENDINGS SECTIONS */
+.projects > .project,
+.announcements.container,
+.trendings.container {
+    border-radius: 0.8rem;
+    box-shadow: 2.5px 4px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* ALL BUTTONS IN EACH PROJECT CONTAINER + THE SEARCH AND NOTIFICATION BUTTONS */
+.project .button,
+.user-profile .search,
+.user-profile .notifications {
+    /* Round the buttons */
+    border-radius: 50%;
+}
+
+/* SAME AS BEFORE (HOVER EFFECT) */
+.project .button:hover,
+.user-profile .search:hover,
+.user-profile .notifications:hover {
+    /* Give the buttons a lighter color when the mouse is hovering over them */
+    filter: invert(60%);
+}
+
+/* SAME AS BEFORE (ACTIVE EFFECT) */
+.project .button:active,
+.user-profile .search:active,
+.user-profile .notifications:active {
+    /* Give the buttons an even lighter color when they are clicked */
+    filter: invert(80%);
+}
+
+/* EVERYTHING IN THE PROFILE SECTION EXCEPT THE BIG BUTTON AT THE BOTTOM LEFT */
+.profile-item-1 form,
+.profile-item-2,
+.profile-item-4 {
+    display: flex;
+    align-items: center;
+}
+
+/* THE RIGHT COLUMN IN THE PROFILE SECTION */
+.profile-item-2 > *,
+.profile-item-4 > * {
+    margin-right: 3rem;
+}
+
+/* THE SEARCH AND NOTIFICATIONS ICONS */
+.profile-item-1 .search img,
+.profile-item-2 .notifications img {
+    width: var(--icon-size);
+    height: var(--icon-size);
+}
+
+/* THE IMAGES OF ALL THE PROFILE BUTTONS (THE ONES IN THE PROFILE AND TRENDING SECTIONS) */
+.profile-item .button.show-profile img,   
+.trending .button.trending img {
+    border-radius: 50%;
+}
+
+/* ALL THE PROFILE BUTTONS */
+.profile-item .show-profile,
+.trending .button {
+    border-radius: 64px 64px 24px 64px;
+}
+
+/* SAME AS BEFORE (HOVER EFFECT) */
+.profile-item .show-profile:hover,
+.trending .button:hover {
+    background-color: #cdecff;
+}
+
+/* SAME AS BEFORE (ACTIVE EFFECT) */
+.profile-item .show-profile:active,
+.trending .button:active {
+    background-color: #e3f4ff;
+}
+
+
+/* SECTION STYLES */
+
+
 .sections.container {
+    /* Make the sections container fit the width of the body */
     width: 100%;
+    /* Make the sections container fit the height of the viewport */
     min-height: 100vh;
     display: grid;
-    grid-template: 150px 390px 390px 1fr / 300px 1fr 300px;
+    /* Add an extra row to accommodate the projects without affecting the position of the announcements and trendings
+    and make the dashboard menu shrink a bit when the width of the page becomes too small */
+    grid-template: 150px 390px 390px 1fr / clamp(23rem, 20vw, 300px) 1fr 300px;
     box-sizing: border-box;
 }
 
 .sections > .section {
+    /* Add some default padding to each section */
     padding: var(--section-padding) 0 var(--section-padding) var(--section-padding);
     box-sizing: border-box;
 }
 
-.sections > .section p {
+/* Set the color of all paragraphs except those that are profile texts */
+.sections > .section p:not(.profile-text) {
     color: rgb(128, 128, 128);
 }
 
@@ -93,7 +202,6 @@ button div {
 }
 
 .section.projects {
-    max-height: calc(100vh);
     grid-area: 2 / 2 / -1 / -2;
 }
 
@@ -103,78 +211,27 @@ button div {
 }
 
 .section.trendings {
+    margin-top: 0.8rem;
     padding-right: var(--section-padding);
     grid-area: 3 / -2 / span 1 / -1;
 }
 
-.projects > .project,
-.announcements.container,
-.trendings.container {
-    border-radius: 0.8rem;
-    box-shadow: 2.5px 4px 4px rgba(0, 0, 0, 0.15);
-}
 
-.project .button:hover,
-.user-profile .search:hover,
-.user-profile .notifications:hover {
-    filter: invert(50%);
-}
+/* DASHBOARD MENU STYLES */
 
-.project .button:active,
-.user-profile .search:active,
-.user-profile .notifications:active {
-    filter: invert(80%);
-}
-
-.profile-item-1 form,
-.profile-item-2,
-.profile-item-4 {
-    display: flex;
-    align-items: center;
-}
-
-.profile-item-2 > *,
-.profile-item-4 > * {
-    margin-right: 3rem;
-}
-
-.profile-item-2 .show-profile:hover,
-.profile-item-3 .show-profile:hover,
-.trending .button:hover {
-    outline: 1px solid var(--highlight-background-color);
-    border-radius: 64px;
-}
-
-.profile-item-2 .show-profile:active,
-.profile-item-3 .show-profile:active,
-.trending .button:active {
-    outline: 2px solid var(--highlight-background-color);
-    border-radius: 64px;
-}
-
-.button.show-profile img,   
-.button.trending img {
-    border-radius: 50%;
-}
-
-.menu .button:hover,
-.user-profile .profile-item-4 .button:hover {
-    color: #a5e0ff;
-}
-
-.menu .button:active,
-.user-profile .profile-item-4 .button:active {
-    color: rgb(48, 48, 255);
-}
 
 .menu > div:first-child {
+    /* Inline the dashboard logo and header */
     display: flex;
+    /* Center the header vertically */
     align-items: center;
 }
 
 .menu > div:first-child img {
+    /* Make the dashboard icon double the size of the regular icons */
     width: calc(var(--icon-size) * 2);
     height: calc(var(--icon-size) * 2);
+    /* Invert the color of the logo to turn it white */
     filter: invert(100%);
 }
 
@@ -182,6 +239,7 @@ button div {
     padding-left: 1.2rem;
 }
 
+/* Change the default values of the buttons in the dashboard menu */
 .menu .button {
     background-color: inherit;
     font-size: 2rem;
@@ -190,14 +248,25 @@ button div {
     color: white;
 }
 
+.menu .button:hover {
+    color: rgb(48, 48, 255);
+}
+
+.menu .button:active {
+    color: rgb(0, 0, 196);
+}
+
 .menu ul {
+    /* Add some margin at the top of each list of options in the dashboard menu */
     margin-top: 70px;
 }
 
 .menu li {
+    /* Make the height of each list element match the height of the icon */
     height: var(--icon-size);
+    /* Leave some space between list elements */
     margin-top: 2.4rem;
-    align-content: center;
+    /* Remove the default list style */
     list-style: none;
 }
 
@@ -208,8 +277,13 @@ button div {
 .menu .button img {
     width: var(--icon-size);
     height: var(--icon-size);
+    /* Invert the color of the logo to turn it white */
     filter: invert(100%);
 }
+
+
+/* USER PROFILE STYLES */
+
 
 .user-profile {
     display: grid;
@@ -228,32 +302,23 @@ button div {
     font-weight: bold;
 }
 
-.profile-item .button .profile-text {
-    color: black;
-}
-
+/* The search bar in the profile section */
 .profile-item-1 input {
     background-color: rgb(230, 230, 230);
-    width: clamp(300px, 100%, 800px);
+    width: clamp(220px, 100%, 800px);
     height: 30px;
+    /* Remove the default border and make the bar rounded */
     border: none;
     border-radius: 32px;
     margin-left: 2rem;
     padding-left: 2rem;
+    font-size: 2rem;
+    /* Remove the default outline */
     outline: none;
 }
 
-.profile-item-1 .search {
-    width: var(--icon-size);
-    height: var(--icon-size);
-}
-
-.profile-item-2 .button.notifications {
-    width: var(--icon-size);
-    height: var(--icon-size);
-}
-
 .profile-item-2 {
+    /* Make the notifications button and the profile link stick to the right side of the section */
     justify-content: end;
 }
 
@@ -271,7 +336,7 @@ button div {
 }
 
 .profile-item-3 .button {
-    height: var(--profile-icon-size-big);
+    height: 72px;
 }
 
 .profile-item-3 .show-profile {
@@ -283,40 +348,58 @@ button div {
 }
 
 .profile-item-3 .profile-text {
+    /* Increase the height of the profile text to space it out a bit */
     line-height: 25px;
-    color: black;
 }
 
 .profile-item-3 .text-container {
     padding-left: 1.6rem;
 }
 
-.profile-item-4 .button {
+.profile-item-4 .button:hover {
+    background-color: rgb(48, 48, 255);
+}
+
+.profile-item-4 .button:active {
+    background-color: rgb(0, 0, 196);
+}
+
+/* These are the New, Upload and Share buttons in the profile section */
+.profile-item .profile-action {
     background-color: #1992d4;
-    width: 100px;
+    /* Reduce the width of the buttons when the screen is thinner */
+    width: clamp(65px, 7vw, 100px);
     height: 40px;
     border-radius: 32px;
     font-size: 1.6rem;
     color: white;
 }
 
+
+/* PROJECTS STYLE */
+
+
 .projects.container {
     padding-bottom: var(--section-padding);
     display: grid;
+    /* Make the projects section more adaptive */
     grid-template: repeat(auto-fill, minmax(var(--min-project-height), 1fr)) / repeat(auto-fill, minmax(360px, 1fr));
     gap: 30px 25px;
     box-sizing: border-box;
 }
 
 .projects > .project {
+    /* Display the contents of each individual project as a flexible box to make them follow the direction of the column instead of that of the row */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-image: linear-gradient(to right, #facc15, #facc15 8px, white 8px);
+    /* Make the last row of projects respect the minimum height of the grid */
     min-height: var(--min-project-height);
     padding: 3.5rem;
 }
 
+/* Make the button container a flexible box and stick the buttons to the right side */
 .project .container.buttons {
     display: flex;
     justify-content: flex-end;
@@ -325,9 +408,13 @@ button div {
 .project .button {
     width: var(--icon-size);
     height: var(--icon-size);
+    /* Space the buttons out */
     margin-left: var(--icon-size);
+    /* Give the buttons a slightly less black tone */
     filter: invert(20%);
 }
+
+/* Assign each icon to its corresponding button as a background image */
 
 .project .favorite {
     background: url("./resources/star-plus-outline.svg") no-repeat;
@@ -340,6 +427,10 @@ button div {
 .project .fork {
     background: url("./resources/source-fork.svg") no-repeat;
 }
+
+
+/* ANNOUNCEMENTS STYLES */
+
 
 .announcements.container {
     background-color: white;
@@ -355,20 +446,23 @@ button div {
 }
 
 .announcement p {
+    /* Make the height of the paragraph equal to three lines of text */
     height: 3lh;
     font-size: 1.2rem;
+    /* Hide all the text that doesn't fit into the paragraph */
     overflow: hidden;
 }
 
+/* Add a small gray line between each announcement, with the same space before and after */
 .announcement + .announcement {
     padding-top: 1.5rem;
     margin-top: 1.5rem;
     border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
-.section.trendings {
-    margin-top: 0.8rem;
-}
+
+/* TRENDINGS STYLES */
+
 
 .trendings.container {
     background-color: white;
@@ -393,6 +487,7 @@ button div {
     padding-left: 1.4rem;
 }
 
-.trending p:first-of-type {
-    color: black;
+.trending .profile-text {
+    /* Increase the height of the profile text to space it out a bit */
+    line-height: 20px;
 }
